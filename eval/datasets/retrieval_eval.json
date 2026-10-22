@@ -1,0 +1,14 @@
+[
+  {
+    "query": "What is DSPy?",
+    "relevant_pages": ["3"]
+  },
+  {
+    "query": "How does DSPy optimize language model pipelines?",
+    "relevant_pages": ["2", "3"]
+  },
+  {
+    "query": "What are DSPy signatures and modules?",
+    "relevant_pages": ["4", "5"]
+  }
+]

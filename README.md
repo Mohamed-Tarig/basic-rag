@@ -79,3 +79,19 @@ python -m ruff check src tests
 3. End-to-End RAG with Ollama
 4. FastAPI & Streamlit
 5. Production Readiness & Evaluation
+
+
+## Milestone 2: Retrieval & Reranking
+
+### Architecture
+
+User Query → BGE Query Embedding → Qdrant Top 10
+→ Cross-Encoder Reranking → Top 3 Chunks
+
+### Run Retrieval
+
+```bash
+python -m rag_app.retrieval.cli \
+  --query "What is DSPy?" \
+  --top-k 10 \
+  --top-n 3
