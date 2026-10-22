@@ -95,3 +95,46 @@ python -m rag_app.retrieval.cli \
   --query "What is DSPy?" \
   --top-k 10 \
   --top-n 3
+
+
+## Milestone 3: End-to-End RAG Generation
+
+### Architecture
+
+User Query → Retrieval → Reranking → Context Builder → Prompt Template → Ollama → Answer + Sources
+
+### LLM Configuration
+
+- Provider: Ollama (local)
+- Model: `llama3.2:1b`
+- Temperature: `0.1`
+- Context Window: `4096`
+- GPU: NVIDIA RTX 4070 Ti SUPER
+
+### Run the RAG Application
+
+Start Ollama and Qdrant:
+
+```bash
+sudo systemctl start ollama.service
+sudo systemctl start docker.service
+sudo docker compose up -d
+```
+
+Run the RAG CLI:
+
+```bash
+python -m rag_app.generation.cli \
+  --query "What is DSPy?"
+```
+
+The CLI returns a JSON object containing the generated answer and retrieved source metadata.
+
+### Current Limitations
+
+- Citation formatting is not consistently followed by the 1B model.
+- Retrieved sources are not independently verified to support every claim.
+- No explicit token-budget management.
+- No automated answer-quality evaluation.
+- Inference performance has not been benchmarked.
+- The current implementation is a development baseline, not a production-ready service.
